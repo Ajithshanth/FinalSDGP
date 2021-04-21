@@ -45,7 +45,6 @@ def result(request):
         x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=.30)
         model = LinearRegression()
         model.fit(x_train, y_train)
-       # pred = model.predict(np.array([var1, var2, var3, var4, var5]).reshape(1, -1))
         pred = model.predict(np.array([var_a, var_b, var_c, var_d, var_e, var_f, var_g, var_h, var_i, var_j, var_k, var_l, var_m, var_n, var_o, var_p, var_q, var_r]).reshape(1, -1))
         pred = round(pred[0])
         value = "The predicted value is $" + str(pred)
