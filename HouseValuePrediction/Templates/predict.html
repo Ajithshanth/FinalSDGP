@@ -1,160 +1,129 @@
 {% load static%}
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-    <title>Predict</title>
+    <title>House value prediction</title>
+    <link rel="stylesheet" href="{%static 'predict.css' %}">
+    <script src="{%static 'events.js' %}"></script>
     <style>
-        .main{
-            position:absolute;
-            top:30px;
-
-            width:900px;
-            align-items:center;
-            border-radius:5%;
-        }
-        div{
-            padding:2% 0% 2% 0% ;
-        }
-        input[type=submit]{
-            background-color:Black;
-            color:white;
-            cursor:pointer;
-            margin-left:2%;
-            padding: 15px 32px;
-        }
-        .heading{
-            background-color : white;
-            width:100%;
-            z-index : 1;
-            position: fixed;
-
-        }
-        h1{
-            font-size:40px;
-            position: fixed;
-            top : 10px;
-            background-color : white;
-            width:100%;
-            z-index : 1;
-            padding : 10px;
-        }
-        h2{
-            font-size:30px;
-            color:DarkRed;
-            position: fixed;
-            background-color : white;
-            width:100%;
-            z-index : 1;
-            padding : 10px 10px 10px 45px;
-        }
         body{
             background-image:url("{%static 'img2.jpg' %}");
-            background-repeat: no-repeat;
-            background-attachment:fixed;
-            background-size:cover;
-
         }
-
-        .form{
-            margin-left:5%;
-            margin-top: 8%;
-        }
-        p{
-            font-weight: bold;
-        }
-
     </style>
 </head>
 
-<body>
+<body >
     <div class="main">
         <div class = "heading">
-        <h1>Please enter the following Values </h1>
+        <h1>Please enter the following Values</h1>
             <h2>
                 {{result2}}
             </h2>
         </div>
+
         <form action="result" class="form">
-                <div class="row">
-                    <div class="col-sm-4">
+
+                <div class="row3">
+                    <div class="data-input">
                         <p> Bedrooms </p>
-                        <input type="text" name="n1" required>
+                        <input type="number" name="n1" min="0" required>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="data-input">
                         <p> Bathrooms </p>
-                        <input type="text" name="n2" required>
+                        <input type="number" name="n2" min="0" required>
                     </div>
-                    <div class="col-sm-4">
-                        <p> Square Feet of Living  </p>
-                        <input type="text" name="n3" required>
-                    </div>
-                    <div class="col-sm-4">
-                        <p> Square Feet of Lot </p>
-                        <input type="text" name="n4" required>
-                    </div>
-                    <div class="col-sm-4">
+
+                    <div class="data-input">
                         <p> Floors </p>
-                        <input type="text" name="n5" required>
+                        <input type="number" name="n5" min="0" required>
                     </div>
-                    <div class="col-sm-4">
-                        <p> Swimming Pool </p>
-                        <input type="text" name="n6" required>
+                    <div class="data-input">
+                        <p> Swimming Pool [ Yes = 1 / No = 0] </p>
+                        <input type="number" name="n6" min="0" max="1" required>
                     </div>
-                    <div class="col-sm-4">
-                        <p> View Count </p>
-                        <input type="text" name="n7" required>
+                </div>
+<hr>
+                <div class="row3">
+                <div class="data-input">
+                        <p> People Viewed the House </p>
+                        <input type="number" name="n7" min="0" required>
                     </div>
-                    <div class="col-sm-4">
-                        <p> Condition </p>
-                        <input type="text" name="n8" required>
+                    <div class="data-input">
+                        <p> Rating [ 1 to 5] </p>
+                        <input type="number" name="n8" min="1" max="5"required>
                     </div>
-                    <div class="col-sm-4">
-                        <p> Grade based on Country Grading System </p>
-                        <input type="text" name="n9" required>
+                    <div class="data-input">
+                        <p> Grade based on Country Grading System [ 5 to 12 ]</p>
+                        <input type="number" name="n9" min="5" max="12"required>
                     </div>
-                    <div class="col-sm-4">
-                        <p> Square Feet apart From Basement </p>
-                        <input type="text" name="n10" required>
-                    </div>
-                    <div class="col-sm-4">
-                        <p> Square Feet of Basement </p>
-                        <input type="text" name="n11" required>
-                    </div>
-                    <div class="col-sm-4">
-                        <p> Built Year </p>
-                        <input type="text" name="n12" required>
-                    </div>
-                    <div class="col-sm-4">
-                        <p> Renovated Year </p>
-                        <input type="text" name="n13" required>
-                    </div>
-                    <div class="col-sm-4">
+
+                </div>
+
+<hr>
+
+                <div class="row3">
+                    <div class="data-input">
                         <p> Zipcode </p>
-                        <input type="text" name="n14" required>
+                        <input type="number" name="n14" min="0" required>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="data-input">
                         <p> Latitude </p>
-                        <input type="text" name="n15" required>
+                        <input type="number" name="n15" min="0" step=".000001" required>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="data-input">
                         <p> Longitude </p>
-                        <input type="text" name="n16" required>
+                        <input type="number" name="n16" min="0" step=".000001" required>
                     </div>
-                    <div class="col-sm-4">
-                        <p> Square Feet of Living after Renovation </p>
-                        <input type="text" name="n17" required>
+                </div>
+<hr>
+                <div class="row3">
+
+                    <div class="data-input">
+                        <p> Built Year </p>
+                        <input type="number" name="n12" min="1990" max="2021" required>
                     </div>
-                    <div class="col-sm-4">
-                        <p> Square Feet of Lot after Renovation </p>
-                        <input type="text" name="n18" required>
+                    <div class="data-input">
+                        <p> Square Feet of House  </p>
+                        <input type="number" id="n3" name="n3" min="0" required>
+                    </div>
+                    <div class="data-input">
+                        <p> Square Feet of Land </p>
+                        <input type="number" name="n4" min="0" required>
+                    </div>
+                    <div class="data-input">
+                        <p> Square Feet of House apart From Basement </p>
+                        <input type="number" id="n10" name="n10" min="0" required>
+                    </div>
+                    <div class="data-input">
+                        <p> Square Feet of Basement </p>
+                        <input type="number" id="n11" name="n11" min="0" required>
+                    </div>
+
+                </div>
+
+
+<hr>
+                <div class="row2">
+                </div>
+
+                <div class="row3">
+
+                    <div class="data-input">
+                        <p> Renovated Year </p>
+                        <input type="number" name="n13" min="1990" max="2021" required>
+                    </div>
+
+                    <div class="data-input">
+                        <p> Square Feet of House after renovation </p>
+                        <input type="number" name="n17" min="0" required>
+                    </div>
+                    <div class="data-input">
+                        <p> Square Feet of Land after renovation </p>
+                        <input type="number" name="n18" min="0" required>
                     </div>
                 </div>
 
@@ -164,7 +133,12 @@
                 </div>
         </form>
 
+
+
+
     </div>
 
 </body>
+
 </html>
+

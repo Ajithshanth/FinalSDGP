@@ -4,41 +4,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>House value prediction</title>
+    <link rel="stylesheet" href="{%static 'home.css' %}">
     <style>
-        h2{
-            margin-top:150px;
-            font-size:40px;
-
-        }
-        h1{
-            font-size:60px;
-        }
-        input[type=submit]{
-            background-color:#000000;
-            color:white;
-            cursor:pointer;
-            padding : 16px 32px;
-        }
-
-       body{
-            background-image:url("{%static 'img1.jpg' %}");
-            background-repeat: no-repeat;
-            background-attachment:fixed;
-            background-size:cover;
-            background-position: 0% 100%;
-            text-align: center;
-
-       }
     </style>
+
 </head>
 <body>
 
     <h2> Welcome To </h2>
     <h1> House Value Prediction Portal</h1>
+    <div class="box">
+        <span style="--i:1"><img src="{%static 'img11.jpg' %}"></span>
+        <span style="--i:2"><img src="{%static 'img12.jpg' %}"></span>
+        <span style="--i:3"><img src="{%static 'img13.jpg' %}"></span>
+        <span style="--i:4"><img src="{%static 'img14.jpg' %}"></span>
+        <span style="--i:5"><img src="{%static 'img15.jpg' %}"></span>
+        <span style="--i:6"><img src="{%static 'img16.jpg' %}"></span>
+        <span style="--i:7"><img src="{%static 'img17.jpg' %}"></span>
+        <span style="--i:8"><img src="{%static 'img18.jpg' %}"></span>
+    </div>
     <form action = "predict" >
         <input type ="submit" value = "Let's Begin!">
     </form>
 
 </body>
 </html>
+

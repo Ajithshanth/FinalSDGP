@@ -57,7 +57,7 @@ ROOT_URLCONF = 'HouseValuePrediction.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'Templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'Templates')],         #Setting Path to Templates folder.
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
