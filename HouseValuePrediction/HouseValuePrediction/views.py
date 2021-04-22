@@ -4,8 +4,9 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn import ensemble
+import joblib
 
-
+getModel = joblib.load('./models/finalized_model.sav')
 
 def home(request):
     return render(request, "home.html")
@@ -40,29 +41,11 @@ def result(request):
 
     if (var_l < var_m) or (var_m ==0) :
 
-        data = pd.read_csv(r"C:/Users/Ajith/Desktop/Final SDGP/HouseValuePrediction/HouseValuePrediction/Data/kc_house_data.csv")
-        data = data.drop(["id", "date"], axis=1)
-
-        X = data.drop("price", axis=1)
-        Y = data["price"]
-
-        X_train , X_test , Y_train , Y_test = train_test_split(X , Y , test_size = 0.10,random_state =2)
-
-        lr_model = LinearRegression()
-        lr_model.fit(X_train, Y_train)
-
-        gbr_model = ensemble.GradientBoostingRegressor(n_estimators=400, max_depth=5, min_samples_split=2,
-                                                 learning_rate=0.1, loss='ls')
-        gbr_model.fit(X_train, Y_train)
-
-        pred1 = gbr_model.predict(np.array([var_a, var_b, var_c, var_d, var_e, var_f, var_g, var_h, var_i, var_j, var_k, var_l, var_m, var_n, var_o, var_p, var_q, var_r]).reshape(1, -1))
+        pred1 = getModel.predict(np.array([var_a, var_b, var_c, var_d, var_e, var_f, var_g, var_h, var_i, var_j, var_k, var_l, var_m, var_n, var_o, var_p, var_q, var_r]).reshape(1, -1))
         pred1 = round(pred1[0])
         price = "${:,.2f}".format(pred1)
         value1 = "The predicted value is " + price
 
-        #pred2 = gbr.predict(np.array([var_a, var_b, var_c, var_d, var_e, var_f, var_g, var_h, var_i, var_j, var_k, var_l, var_m, var_n, var_o, var_p, var_q, var_r]).reshape(1, -1))
-        #pred2 = round(pred2[0])
-        #value2 = "The predicted value is $" + str(pred2)
 
         return render(request, "predict.html", {"result2": value1 } )
 
