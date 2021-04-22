@@ -23,8 +23,6 @@
        }
        .box{
             position: relative;
-            width: 200 ;
-            height: 200;
             transform-style: preserve-3d;
             animation: animate 30s linear infinite;
 
