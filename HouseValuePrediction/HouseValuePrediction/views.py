@@ -40,7 +40,7 @@ def result(request):
 
     if (var_l < var_m) or (var_m ==0) :
 
-        data = pd.read_csv(r"/HouseValuePrediction/HouseValuePrediction/Data/kc_house_data.csv")
+        data = pd.read_csv(r"C:/Users/Ajith/Desktop/Final SDGP/HouseValuePrediction/HouseValuePrediction/Data/kc_house_data.csv")
         data = data.drop(["id", "date"], axis=1)
 
         X = data.drop("price", axis=1)
