@@ -51,11 +51,11 @@ def result(request):
         lr_model = LinearRegression()
         lr_model.fit(X_train, Y_train)
 
-        #gbr_model = ensemble.GradientBoostingRegressor(n_estimators=400, max_depth=5, min_samples_split=2,
-                                          #       learning_rate=0.1, loss='ls')
-        #gbr_model.fit(X_train, Y_train)
+        gbr_model = ensemble.GradientBoostingRegressor(n_estimators=400, max_depth=5, min_samples_split=2,
+                                                 learning_rate=0.1, loss='ls')
+        gbr_model.fit(X_train, Y_train)
 
-        pred1 = lr_model.predict(np.array([var_a, var_b, var_c, var_d, var_e, var_f, var_g, var_h, var_i, var_j, var_k, var_l, var_m, var_n, var_o, var_p, var_q, var_r]).reshape(1, -1))
+        pred1 = gbr_model.predict(np.array([var_a, var_b, var_c, var_d, var_e, var_f, var_g, var_h, var_i, var_j, var_k, var_l, var_m, var_n, var_o, var_p, var_q, var_r]).reshape(1, -1))
         pred1 = round(pred1[0])
         price = "${:,.2f}".format(pred1)
         value1 = "The predicted value is " + price
