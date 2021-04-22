@@ -37,9 +37,9 @@ def result(request):
 
     if (var_l < var_m) or (var_m ==0) :
 
-        pred1 = getModel.predict(np.array([var_a, var_b, var_c, var_d, var_e, var_f, var_g, var_h, var_i, var_j, var_k, var_l, var_m, var_n, var_o, var_p, var_q, var_r]).reshape(1, -1))
-        pred1 = round(pred1[0])
-        price = "${:,.2f}".format(pred1)
+        predict1 = getModel.predict(np.array([var_a, var_b, var_c, var_d, var_e, var_f, var_g, var_h, var_i, var_j, var_k, var_l, var_m, var_n, var_o, var_p, var_q, var_r]).reshape(1, -1))
+        predict1 = round(predict1[0])
+        price = "${:,.2f}".format(predict1)
         value1 = "The predicted value is " + price
 
 
